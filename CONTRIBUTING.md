@@ -2,6 +2,18 @@
 
 Found an issue with an exercise, or have an idea for a new one? Open an issue first before writing any code — it saves everyone rework if the idea doesn't fit the curriculum sequence.
 
+## How tests look like for beginner exercises 
+Let's look at the test file first:
+
+```python
+def test_prints_hello_world(run_script):
+    stdout, _ = run_script("hello_world.py")
+    assert stdout.strip() == "Hello, World!"
+```
+
+`run_script` is a helper set up once for the whole repo. It runs `hello_world.py` exactly the way Python would if you typed `python hello_world.py`, and hands back everything it printed. The test then checks that what got printed matches `'Hello, World!'` exactly — capitalization and punctuation included.
+
+
 ## Two exercise styles
 
 Early exercises don't assume you know about functions yet, so they're written as **plain scripts** — top-level code you'd type straight into the terminal, no `def` or `import`. Their tests use a shared `run_script` fixture (see `conftest.py`) that runs the file exactly like `python <file>.py` and checks what it printed.
