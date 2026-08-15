@@ -20,6 +20,15 @@ Early exercises don't assume you know about functions yet, so they're written as
 
 Once functions show up in the curriculum, exercises switch to the **function style** you may be more used to seeing: a stub function you fill in, imported directly into the test file. Each exercise's README says which style it is, but you can also tell from the stub file itself — a bare script vs. a `def`.
 
+## Friendly failure messages
+
+Raw pytest failures (`IndexError`, `assert '' == 'Hello, World!'`) are confusing before you know what a list or an assertion diff even is. Script-style tests instead use two shared helpers from `conftest.py`:
+
+- `expect_output(stdout, "expected text")` — checks the whole printed output at once, and on failure says plainly what was expected vs. what actually printed.
+- `expect_line(stdout, line_number, "expected text")` — checks one line of output (1-indexed). If the script hasn't printed that many lines yet, it says so directly ("Have you added a print() statement for this part yet?") instead of raising `IndexError`.
+
+Both suppress the Python traceback entirely — the learner only sees the message, not internal test code.
+
 ## Running everything at once
 
 From the repo root, `pytest` (no arguments) will discover and run every non-skipped test in the repo — handy as a sanity check, but exercises are meant to be done one at a time.
