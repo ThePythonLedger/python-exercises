@@ -1,16 +1,18 @@
-def test_prints_the_sum(run_script):
-    stdout, _ = run_script("add_numbers_solution.py")
-    lines = stdout.strip().splitlines()
-    assert lines[0] == "11"
+import pytest
 
 
-def test_prints_the_difference(run_script):
-    stdout, _ = run_script("add_numbers_solution.py")
-    lines = stdout.strip().splitlines()
-    assert lines[1] == "5"
+def test_prints_the_sum(run_script, expect_line):
+    stdout, _ = run_script("add_numbers.py")
+    expect_line(stdout, 1, "11")
 
 
-def test_prints_the_product(run_script):
-    stdout, _ = run_script("add_numbers_solution.py")
-    lines = stdout.strip().splitlines()
-    assert lines[2] == "24"
+@pytest.mark.skip(reason="unlock once the test above passes")
+def test_prints_the_difference(run_script, expect_line):
+    stdout, _ = run_script("add_numbers.py")
+    expect_line(stdout, 2, "5")
+
+
+@pytest.mark.skip(reason="unlock once the test above passes")
+def test_prints_the_product(run_script, expect_line):
+    stdout, _ = run_script("add_numbers.py")
+    expect_line(stdout, 3, "24")
