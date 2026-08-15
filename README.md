@@ -1,6 +1,6 @@
 # Python Exercises
 
-These exercises are intended to complement [The Python Ledger](https://github.com/) curriculum. They should be done alongside the matching lessons, not treated as a standalone tutorial.
+These exercises are intended to complement [The Python Ledger](https://thepythonledger.github.io/Docusaurus-engine/) curriculum. They should be done alongside the matching lessons, not treated as a standalone tutorial.
 
 > **Note:** Please don't open a PR with your completed solutions. If merged, the exercises would stop being blank for the next learner, and it just creates extra work reverting it. Feel free to commit and push to your own fork though — practicing git is part of the point.
 
@@ -27,16 +27,6 @@ These exercises are intended to complement [The Python Ledger](https://github.co
 6. **Once you're done**, compare against `solution/` — but not before. There's more than one valid way to pass the tests; the solution is just one example.
 
 The first exercise, `01_hello_world`, walks through this whole process in detail.
-
-## Two exercise styles
-
-Early exercises don't assume you know about functions yet, so they're written as **plain scripts** — top-level code you'd type straight into the terminal, no `def` or `import`. Their tests use a shared `run_script` fixture (see `conftest.py`) that runs the file exactly like `python <file>.py` and checks what it printed.
-
-Once functions show up in the curriculum, exercises switch to the **function style** you may be more used to seeing: a stub function you fill in, imported directly into the test file. Each exercise's README says which style it is, but you can also tell from the stub file itself — a bare script vs. a `def`.
-
-## Running everything at once
-
-From the repo root, `pytest` (no arguments) will discover and run every non-skipped test in the repo — handy as a sanity check, but exercises are meant to be done one at a time.
 
 ## Debugging
 
