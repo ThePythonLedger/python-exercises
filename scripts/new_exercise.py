@@ -66,6 +66,12 @@ TODO: describe the task here. This is a script-style exercise — plain
 top-level code, no functions needed. Say what the script should print
 (or which variables it should end up with).
 
+### Run the tests
+To run the tests, run the following command in the directory root (`python-excercises`):
+```bash
+python check.py {number:02d}
+```
+
 ## Notes
 
 TODO: mention any edge cases, hints, or background concepts a learner

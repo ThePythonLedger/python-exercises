@@ -14,5 +14,11 @@ You need to define the following variables:
 
 You need to make sure the variables are named **exactly** like written here, otherwise the tests will fail, values can be anything you want.
 
+### Run the tests
+To run the tests, run the following command in the directory root (`python-excercises`):
+```bash
+python check.py 02
+```
+
 ## Notes
 To finish this excercise, visit our first lesson in TPL - [Datatypes](https://thepythonledger.github.io/Docusaurus-engine/lessons/python-foundations/core-datatypes)

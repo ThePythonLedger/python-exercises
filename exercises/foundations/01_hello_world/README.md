@@ -7,13 +7,14 @@ In this directory you'll find 2 other files:
 1. `hello_world.py`
 2. `test_hello_world.py`
 
-Run the test from the root directory (python-exercises):
+Run the test from the root directory (`python-exercises`):
 **Note:** try `python3` if the command fails
 
 ```bash
 python check.py 01
 ```
-or
+
+Full path syntax is also supported (with TAB completions working)
 ```bash
 python check.py foundations/01_hello_world
 ```
