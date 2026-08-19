@@ -94,3 +94,84 @@ def expect_line():
             )
 
     return _expect
+
+
+@pytest.fixture
+def expect_variables():
+    """Assert that several variables in a script's namespace all match
+    expected values at once, with a single friendly summary of everything
+    that's missing or wrong — instead of stopping at the first problem
+    like expect_variable does.
+
+    Usage:
+        def test_conversions_are_correct(run_script, expect_variables):
+            _, namespace = run_script("fahrenheit.py")
+            expect_variables(namespace, {"fahrenheit": 68.0, "kelvin": 293.15})
+    """
+
+    def _expect(namespace, expected):
+        missing = [name for name in expected if name not in namespace]
+        wrong = {
+            name: (namespace[name], expected_value)
+            for name, expected_value in expected.items()
+            if name in namespace and namespace[name] != expected_value
+        }
+
+        if not missing and not wrong:
+            return
+
+        lines = []
+        if missing:
+            names = ", ".join(f"'{name}'" for name in missing)
+            lines.append(f"Missing variable(s): {names}. Have you created them yet?")
+        for name, (actual, expected_value) in wrong.items():
+            lines.append(
+                f"'{name}' should be {expected_value!r}, but it was {actual!r}."
+            )
+
+        pytest.fail("\n".join(lines), pytrace=False)
+
+    return _expect
+
+
+@pytest.fixture
+def expect_variable_type():
+    """Assert that a variable exists and is of a given type, without caring
+    about its exact value — e.g. "is this a string" rather than "is this
+    exactly 'hello'".
+
+    Usage:
+        def test_name_is_a_string(run_script, expect_variable_type):
+            _, namespace = run_script("about_you.py")
+            expect_variable_type(namespace, "name", str)
+    """
+
+    friendly_names = {
+        str: "text (str)",
+        int: "a whole number (int)",
+        float: "a decimal number (float)",
+        bool: "True or False (bool)",
+        list: "a list",
+        dict: "a dictionary",
+        tuple: "a tuple",
+    }
+
+    def _friendly(t):
+        return friendly_names.get(t, t.__name__)
+
+    def _expect(namespace, name, expected_type):
+        if name not in namespace:
+            pytest.fail(
+                f"Expected a variable named '{name}', but it doesn't exist.\n"
+                f"Have you created a variable called '{name}' yet?",
+                pytrace=False,
+            )
+        actual = namespace[name]
+        if not isinstance(actual, expected_type):
+            pytest.fail(
+                f"Expected '{name}' to be {_friendly(expected_type)}, "
+                f"but it was {_friendly(type(actual))} ({actual!r}).",
+                pytrace=False,
+            )
+
+    return _expect
