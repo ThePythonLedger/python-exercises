@@ -114,7 +114,7 @@ def next_number(category_dir: Path) -> int:
 
 
 def create_exercise(category_path: str, title: str, style: str) -> None:
-    category_dir = ROOT / category_path
+    category_dir = ROOT / "exercises" / category_path
     category_dir.mkdir(parents=True, exist_ok=True)
 
     func_name = to_snake_case(title)
