@@ -7,10 +7,15 @@ In this directory you'll find 2 other files:
 1. `hello_world.py`
 2. `test_hello_world.py`
 
-Run the test from inside this directory:
+Run the test from the root directory (python-exercises):
+**Note:** try `python3` if the command fails
 
 ```bash
-pytest test_hello_world.py -v
+python check.py 01
+```
+or
+```bash
+python check.py foundations/01_hello_world
 ```
 
 Watch it fail. Right now `hello_world.py` is empty, so nothing gets printed.
