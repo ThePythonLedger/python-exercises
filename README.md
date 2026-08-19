@@ -33,10 +33,6 @@ These exercises are intended to complement [The Python Ledger](https://thepython
 
 The first exercise, `01_hello_world`, walks through this whole process in detail.
 
-## Debugging
-
-Run with `pytest test_<exercise_name>.py -v --pdb` to drop into the debugger on the first failure, or set a breakpoint directly in your code with `breakpoint()`.
-
 ## Contributing
 
 Suggestions for new exercises or fixes to existing ones are welcome — see `CONTRIBUTING.md`.
