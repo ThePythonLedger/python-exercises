@@ -7,6 +7,9 @@ These exercises are intended to complement [The Python Ledger](https://thepython
 ## How To Use These Exercises
 
 1. **Fork and clone** this repository.
+    **Forking** is making copies of somebody elses code under your own profile. This is standard practice in open source. Follow [Guide on Forking Repository](https://docs.github.com/en/pull-requests/how-tos/work-with-forks/fork-a-repo#forking-a-repository) to learn more on how it works.
+
+    **Cloning** is downloading repository to your own local machine so you can modify and run it. Follow [Guide on Cloning Repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository) to learn more about how this works.
 2. **Install dependencies.** From the repo root:
    ```bash
    python -m venv .venv
