@@ -6,6 +6,9 @@ INSTALL_PYTEST_INSTRUCTIONS = """
 python -m venv .venv
 source .venv/bin/activate
 pip install pytest
+
+NOTE: 
+    If `python -m venv .venv` command does not work, try it with `python3` instead of `python`
 """
 
 
@@ -16,6 +19,9 @@ def check_for_pytest():
         print(
             "❌ No `pytest` installed.\nPlease install `pytest` first.\nRun the following commands, one by one:"
         )
+        print("- " * 30)
+        print(INSTALL_PYTEST_INSTRUCTIONS)
+        sys.exit(1)
 
 
 def resolve_exercise_path(query: str) -> Path:
@@ -64,6 +70,8 @@ def filter_for_excercises_only(exercise_path: Path):
 
 
 def main():
+    check_for_pytest()
+
     if len(sys.argv) < 2:
         print("Usage: python check.py <exercise-folder-or-number>")
         sys.exit(1)
