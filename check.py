@@ -65,7 +65,6 @@ def filter_for_excercises_only(exercise_path: Path):
             and path.name.endswith(".py")
             and path.name.startswith("test_")
         ):
-            print(f"Found: {path}")
             return path
 
 
