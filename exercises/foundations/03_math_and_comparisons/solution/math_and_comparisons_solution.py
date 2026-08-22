@@ -13,6 +13,12 @@ multiplication = a * b
 ## Divide a and b
 division = a / b
 
+# Use f-string to print out the data crunched
+# Needs to be in this format:
+# A: <a> B: <b> -> +: <addition>, -: <substraction>, *: <multiplication>, /: <division>
+formatted_string = f"A: {a} B: {b} -> +: {addition}, -: {substraction}, *: {multiplication}, /: {division}"
+print(formatted_string)
+
 
 # Add these two strings together to variable `concated_name`
 f_name = "Jane"

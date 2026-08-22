@@ -5,6 +5,8 @@ def test_basic_math(run_script, expect_variables):
         {"addition": 15, "substraction": -5, "multiplication": 50, "division": 0.5},
     )
 
+def test_fstring()
+
 
 def test_string_concat(run_script, expect_variables):
     _, namespace = run_script("math_and_comparisons_solution.py")
