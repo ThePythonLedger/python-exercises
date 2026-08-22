@@ -1,42 +1,18 @@
-a = 5
-b = 10
-# Write your code under this comment.
-# Do not change the variables a and b as the tests will fail.
+player_class = "Wizard"
+player_attack = 35
+player_defense = 13
+enemy_attack = 28
+enemy_defense = 16
 
-# Replace `None` with the correct mathematical operation
-## Add a and b
-addition = a + b
-## Substract a from b
-substraction = a - b
-## Multiply a and b
-multiplication = a * b
-## Divide a and b
-division = a / b
+player_attack_power = player_attack * player_defense
+enemy_attack_power = enemy_attack * enemy_defense
 
-# Use f-string to print out the data crunched
-# Needs to be in this format:
-# A: <a> B: <b> -> +: <addition>, -: <substraction>, *: <multiplication>, /: <division>
-formatted_string = f"A: {a} B: {b} -> +: {addition}, -: {substraction}, *: {multiplication}, /: {division}"
-print(formatted_string)
+damage_dealt = player_attack_power - enemy_attack_power
 
+combat_log = f"{player_class.upper()} has suffered {damage_dealt} damage."
 
-# Add these two strings together to variable `concated_name`
-f_name = "Jane"
-l_name = "Doe"
+is_player_stronger = player_attack_power > enemy_attack_power
+is_balanced = player_defense == enemy_defense
 
-concat_name = f_name + l_name
-
-
-# Get some letters from the following string
-shop_name = "My Awesome Shop"
-## Get the first letter
-first_letter = shop_name[0]
-## Get the second last letter
-second_last_letter = shop_name[-2]
-
-
-# Convert case on the following string
-hello = "HeLLo AND WelcomE"
-lowercased = hello.lower()
-uppercased = hello.upper()
-titlecased = hello.title()
+class_initial = player_class[0]
+class_code = player_class[0:3].lower()
