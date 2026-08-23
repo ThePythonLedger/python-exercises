@@ -1,24 +1,45 @@
-# Exercise 02 - Datatypes
+# Exercise 02 — Space Station Diagnostic System
 
 ## Description
-Welcome to your first real excercise. In the last one, we checked if everything is working correctly, now its time to put your knowlege to test. This and feature excercises contain multiple tests which are skipped by default (only first one is enabled). Your job is to finish one thing at a time and run the test. To run the next test, go to `test_<lesson_name>.py` and remove the `@pytest.mark.skip` line from the next test. Your goal is to make all tests pass.
+Welcome aboard the ORION-9 deep-space research station! The central terminal suffered a reboot after a cosmic flare. Before life support and navigation systems can come back online, you must manually declare and initialize the core system variables.
 
-In this excercise you will define datatypes we talked about in lesson: **String**, **Integer**, **Float**, **Boolean**, **None**.
+This exercise will guide you through Python's core data types: **String**, **Integer**, **Float**, **Boolean**, and **None**, along with basic type casting and printing.
 
-You need to define the following variables:
-* `mystring` - set it to some string
-* `myinteger` - set it to some integer
-* `myfloat` - set it to some float
-* `myboolean` - set it to some boolean
-* `mynonevalue` - set it to some None
+---
 
-You need to make sure the variables are named **exactly** like written here, otherwise the tests will fail, values can be anything you want.
+## Tasks
 
-### Run the tests
-To run the tests, run the following command in the directory root (`python-excercises`):
+### Task 1: Initialize System Identity
+Declare the station's core identification variables:
+* `station_name` — a **string** representing the station name (e.g., `"Orion 9"`)
+* `module_count` — an **integer** representing active station modules (e.g., `12`)
+* `signal_frequency` — a **float** representing the sub-space signal frequency (e.g., `1420.405`)
+* `life_support_active` — a **boolean** set to `True`
+* `backup_generator` — set to `None` (representing an offline component)
+
+> **Next step:** Run the test suite. If `test_task_1` passes, open `test_core_datatypes.py` and remove the `@pytest.mark.skip` line above `test_task_2`.
+
+### Task 2: Type Casting & Calibration
+The telemetry unit sent data in the wrong format! Fix the formats using type casting:
+* `raw_energy_reading` is provided as `"100"` (a string). Create a new variable `energy_level` by casting `raw_energy_reading` to an **integer**.
+* `raw_distance_reading` is provided as `45` (an integer). Create a new variable `exact_distance` by casting `raw_distance_reading` to a **float**.
+* `raw_status_code` is provided as `1` (an integer). Create a new variable `is_operational` by casting `raw_status_code` to a **boolean**.
+
+> **Next step:** Run the test suite. If `test_task_2` passes, open `test_core_datatypes.py` and remove the `@pytest.mark.skip` line above `test_task_3`.
+
+### Task 3: Terminal Broadcast
+* Create a variable `station_status` by converting `module_count` to a string and concatenating it with `station_name` (e.g., `"12 - Orion 9"`).
+* Print `station_status` to the terminal console using the `print()` function.
+
+> **Next step:** Run the test suite. If `test_task_3` passes, congrats! You have completed then exercise.
+
+---
+
+## How to Run the Tests
+Run the following command from the root directory:
 ```bash
 python check.py 02
 ```
 
-## Notes
-To finish this excercise, visit our first lesson in TPL - [Datatypes](https://thepythonledger.github.io/Docusaurus-engine/lessons/python-foundations/core-datatypes)
+## Resources
+Review the core concepts in [The Python Ledger lesson on Core Datatypes](https://thepythonledger.github.io/Docusaurus-engine/lessons/python-foundations/core-datatypes).
