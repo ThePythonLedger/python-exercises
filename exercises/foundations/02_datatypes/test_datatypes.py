@@ -10,7 +10,6 @@ def test_task1(run_script, expect_variable_type):
     expect_variable_type(namespace, "backup_generator", type(None))
 
 
-@pytest.mark.skip(reason="Finish earlier task first")
 def test_task2(run_script, expect_variables):
     _, namespace = run_script("datatypes.py")
     expect_variables(
