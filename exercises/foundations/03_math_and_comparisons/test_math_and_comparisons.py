@@ -15,19 +15,16 @@ def test_task1(run_script, expect_variables):
     )
 
 
-@pytest.mark.skip(reason="Finish task 1 first")
 def test_task2(run_script, expect_variables):
     _, namespace = run_script("math_and_comparisons.py")
     expect_variables(namespace, {"player_attack_power": 455, "enemy_attack_power": 448})
 
 
-@pytest.mark.skip(reason="Finish task 2 first")
 def test_task3(run_script, expect_variables):
     _, namespace = run_script("math_and_comparisons.py")
     expect_variables(namespace, {"damage_dealt": 7})
 
 
-@pytest.mark.skip(reason="Finish task 3 first")
 def test_task4(run_script, expect_variables):
     _, namespace = run_script("math_and_comparisons.py")
     expect_variables(
@@ -36,7 +33,6 @@ def test_task4(run_script, expect_variables):
     )
 
 
-@pytest.mark.skip(reason="Finish task 4 first")
 def test_task5(run_script, expect_variables):
     _, namespace = run_script("math_and_comparisons.py")
     expect_variables(
@@ -45,7 +41,6 @@ def test_task5(run_script, expect_variables):
     )
 
 
-@pytest.mark.skip(reason="Finish task 5 first")
 def test_task6(run_script, expect_variables):
     _, namespace = run_script("math_and_comparisons.py")
     expect_variables(
