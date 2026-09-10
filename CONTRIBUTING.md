@@ -9,6 +9,9 @@ def test_prints_hello_world(run_script):
     assert stdout.strip() == "Hello, World!"
 ```
 
+## No AI generated exercises
+This course is to teach students how to code and do things properly. If we use AI what example are we setting?
+
 ### Fixtures
 Raw pytest failures (`IndexError`, `assert '' == 'Hello, World!'`) are confusing before you know what a list or an assertion diff even is. Script-style tests instead use four shared helpers from `conftest.py`.
 
