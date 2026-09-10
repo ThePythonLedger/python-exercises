@@ -3,31 +3,38 @@
 Found an issue with an exercise, or have an idea for a new one? Open an issue first before writing any code — it saves everyone rework if the idea doesn't fit the curriculum sequence.
 
 ## How tests look like for beginner exercises 
-Let's look at the test file first:
-
 ```python
 def test_prints_hello_world(run_script):
     stdout, _ = run_script("hello_world.py")
     assert stdout.strip() == "Hello, World!"
 ```
 
-`run_script` is a helper set up once for the whole repo. It runs `hello_world.py` exactly the way Python would if you typed `python hello_world.py`, and hands back everything it printed. The test then checks that what got printed matches `'Hello, World!'` exactly — capitalization and punctuation included.
+### Fixtures
+Raw pytest failures (`IndexError`, `assert '' == 'Hello, World!'`) are confusing before you know what a list or an assertion diff even is. Script-style tests instead use four shared helpers from `conftest.py`.
 
+We have implemented a few custom functions (*fixtures*) built to make errors less scary for students. Please use these until later exercises where students cover specific erorrs and how to handle them.
+
+* `run_script` - Run a .py file exactly as `python <file>` would, and capture its output.
+* `expect_output` - Assert a script's entire printed output matches exactly, with a
+    plain-language failure message instead of pytest's default diff.
+* `expect_line` - Assert that a specific (1-indexed) line of a script's output matches
+    exactly, with a plain-language message — including when the script
+    hasn't printed that many lines yet, instead of a raw `IndexError`.
+* `expect_variables` - Assert that several variables in a script's namespace all match
+    expected values at once, with a single friendly summary of everything
+    that's missing or wrong — instead of stopping at the first problem
+    like `expect_variable` does.
+* `expect_variable_type` - Assert that a variable exists and is of a given type, without caring
+    about its exact value — e.g. "is this a string" rather than "is this
+    exactly 'hello'".
+
+You can find more about these functions in their docstrings in [conftest.py file](https://github.com/ThePythonLedger/python-exercises/blob/main/conftest.py)
 
 ## Two exercise styles
 
 Early exercises don't assume you know about functions yet, so they're written as **plain scripts** — top-level code you'd type straight into the terminal, no `def` or `import`. Their tests use a shared `run_script` fixture (see `conftest.py`) that runs the file exactly like `python <file>.py` and checks what it printed.
 
 Once functions show up in the curriculum, exercises switch to the **function style** you may be more used to seeing: a stub function you fill in, imported directly into the test file. Each exercise's README says which style it is, but you can also tell from the stub file itself — a bare script vs. a `def`.
-
-## Friendly failure messages
-
-Raw pytest failures (`IndexError`, `assert '' == 'Hello, World!'`) are confusing before you know what a list or an assertion diff even is. Script-style tests instead use two shared helpers from `conftest.py`:
-
-- `expect_output(stdout, "expected text")` — checks the whole printed output at once, and on failure says plainly what was expected vs. what actually printed.
-- `expect_line(stdout, line_number, "expected text")` — checks one line of output (1-indexed). If the script hasn't printed that many lines yet, it says so directly ("Have you added a print() statement for this part yet?") instead of raising `IndexError`.
-
-Both suppress the Python traceback entirely — the learner only sees the message, not internal test code.
 
 ## Running everything at once
 
