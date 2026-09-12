@@ -1,0 +1,44 @@
+name: Guard Unassigned PRs
+
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  check-assignee:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: read
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo, number } = context.issue;
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+
+            // Extract linked issue number (e.g., "Closes #12" or "Fixes #5")
+            const match = pr.body?.match(/(?:fixes|closes|resolves)\s+#(\d+)/i);
+            
+            if (!match) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: number,
+                body: `Hi @${author}! Please reference an issue in your PR body (e.g., \`Closes #12\`) and make sure it is assigned to you.`
+              });
+              await github.rest.pulls.update({ owner, repo, pull_number: number, state: 'closed' });
+              return;
+            }
+
+            const issueNum = parseInt(match[1]);
+            const issue = await github.rest.issues.get({ owner, repo, issue_number: issueNum });
+            const isAssigned = issue.data.assignees.some(a => a.login === author);
+
+            if (!isAssigned) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: number,
+                body: `Hi @${author}! This PR was automatically closed because Issue #${issueNum} is not assigned to you. Please comment on the issue to claim it first!`
+              });
+              await github.rest.pulls.update({ owner, repo, pull_number: number, state: 'closed' });
+            }
+            
