@@ -127,4 +127,4 @@ pytest exercises/foundations/05_functions/test_functions.py -v
 
 ## Resources & Notes
 Review the concepts covered in this exercise in:
-* [The Python Ledger Curriculum: Functions](https://github.com/ThePythonLedger/Curriculum/blob/main/curriculum/06-code-organization/01-functions.md)
+* [The Python Ledger Curriculum: Functions](https://thepythonledger.github.io/Docusaurus-engine/lessons/code-organization/functions)
